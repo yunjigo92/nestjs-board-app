@@ -14,21 +14,19 @@ export class BoardsController {
     }
 
 
-    @Post()
+    @Post('/pull')
     createBoardFull(@Body() body){
         console.log('body',body);
     }
 
-
-    @Post()
-    createBoard(@Body() createBoardDto : CreateBoardDto
-    ): Board{
+    @Post('/')
+    createBoard(@Body() createBoardDto:CreateBoardDto): Board{
         return this.boardsService.createBoard(createBoardDto);
     }
 
     //특정 게시물 조회
     @Get('/:id')
-    getBoardById(@Param('id') id: string): Board{
+    getBoardById(@Param('id') id : string) : Board{
         return this.boardsService.getBoardById(id);
     }
 
@@ -46,7 +44,6 @@ export class BoardsController {
     ): Board{
         return this.boardsService.updateBoardStatus(id, status);
     }
-
 }
 
 
